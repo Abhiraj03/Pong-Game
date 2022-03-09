@@ -7,11 +7,18 @@ class Ball(Turtle):
         self.shape('circle')
         self.penup()
         self.color('white')
-        self.goto(20,20)
+        self.x_move = 10
+        self.y_move = 10
     
     def move(self):
-        self.inc = 10
-        self.goto(self.xcor() + self.inc, self.ycor() + self.inc)
+        self.goto(self.xcor() + self.x_move, self.ycor() + self.y_move)
 
-    def turn(self):
-        self.setheading(self.heading() + 180)
+    def bounce(self):
+        self.y_move = self.y_move * -1
+    
+    def hit(self):
+        self.x_move = self.x_move * -1
+    
+    def reset(self):
+        self.goto(0,0)
+        self.hit()
